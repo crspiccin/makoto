@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS person (
-    id TEXT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     email TEXT,
     password TEXT,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS person (
 );
 
 CREATE TABLE IF NOT EXISTS entry (
-    id TEXT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     amount REAL,
     type TEXT,
     description TEXT,

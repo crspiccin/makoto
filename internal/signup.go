@@ -16,5 +16,4 @@ func signupRoutes(rg *gin.RouterGroup) {
 		fmt.Println(c)
 		c.JSON(http.StatusOK, "users")
 	})
-	
 }
