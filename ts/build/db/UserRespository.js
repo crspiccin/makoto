@@ -12,12 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const UserRespository_1 = __importDefault(require("../db/UserRespository"));
-const router = (0, express_1.Router)();
-const userRepository = new UserRespository_1.default();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield userRepository.findAll();
-    return res.json(result);
-}));
-exports.default = router;
+const sqlite3_1 = __importDefault(require("sqlite3"));
+const sqlite_1 = require("sqlite");
+const path_1 = __importDefault(require("path"));
+class UserRepository {
+    constructor() {
+        (() => __awaiter(this, void 0, void 0, function* () {
+            // open the database
+            this.db = yield (0, sqlite_1.open)({
+                filename: path_1.default.join(__dirname, "..", "..", "..", "makoto.db"),
+                driver: sqlite3_1.default.Database,
+            });
+        }))();
+    }
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("passou");
+            return this.db.all("SELECT * from USER");
+        });
+    }
+}
+exports.default = UserRepository;

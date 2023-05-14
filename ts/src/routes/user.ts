@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { Database } from "sqlite3";
+import UserRepository from "../db/UserRespository";
 
 const router = Router();
+const userRepository = new UserRepository();
 
 router.get("/", async (req, res) => {
-	res.json({
-		user: "blabla",
-	});
+	const result = await userRepository.findAll();
+	return res.json(result);
 });
 
 export default router;

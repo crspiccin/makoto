@@ -3,7 +3,7 @@ import userRouter from "./routes/user";
 import entryRouter from "./routes/entry";
 
 const app = express();
-const port = 3000;
+const port = 3010;
 
 app.use(express.json());
 app.use("/users", userRouter);
