@@ -1,17 +1,21 @@
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS USER (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    email TEXT,
-    password TEXT,
-    created_at TIMESTAMP,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS entry (
+CREATE TABLE IF NOT EXISTS ENTRY (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    amount REAL,
-    type TEXT,
-    description TEXT,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    iduser INTEGER NOT NULL,
+    amount REAL NOT NULL,
+    type TEXT NOT NULL,
+    description TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP,
+    FOREIGN KEY(iduser) REFERENCES USER(id)
 );
+
+PRAGMA foreign_keys = ON;
