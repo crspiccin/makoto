@@ -11,6 +11,8 @@ export type Entry = {
 export type User = {
 	id: string;
 	name: string;
+	loginId: string;
+	provider: string;
 	email: string;
 	password: string;
 	created_at: number;
