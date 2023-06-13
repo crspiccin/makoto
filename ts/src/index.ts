@@ -20,12 +20,22 @@ const port = 3010;
 app.use(express.json());
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
+app.use((req, res, next) => {
+	res.locals.isAuthenticated = req.oidc.isAuthenticated();
+	next();
+  });
 app.use("/users", userRouter);
 app.use("/entries", entryRouter);
 // req.isAuthenticated is provided from the auth router
 app.get("/", (req, res) => {
 	res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
+
+app.get("/callback", (req, res) => {
+	res.send({
+		"authenticated": req.oidc.isAuthenticated()
+	})
+})
 
 app.get("/profile", requiresAuth(), (req, res) => {
 	res.send(JSON.stringify(req.oidc.user));
