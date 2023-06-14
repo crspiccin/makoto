@@ -1,7 +1,7 @@
 # Makoto 
 #### under construction
 
-Makoto is API layer with a chatbot and web client where we you track financial expences and gains, currently people uses spreadcheats generating a messy, the aspiration is to generate a friend agent where you can talk like your personal accountant to generate your financial reports.
+Makoto is an API layer where you can track financial expenses and gains, currently, people use spreadsheets that could create a mess depending on the case, the aspiration is to generate a friend agent where you can chat like your personal accountant to generate your financial reports.
 
 ## HLD
 
