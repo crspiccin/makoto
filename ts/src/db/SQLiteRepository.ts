@@ -25,7 +25,7 @@ export class SQLLiteRepository {
 	}
 
 	protected async query(sql: string, params: any[]): Promise<any[]> {
-		return await this.db.query(sql, params);
+		return await this.db.all(sql, params);
 	}
 
 	protected async all(sql: string): Promise<any[]> {

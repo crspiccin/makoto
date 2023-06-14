@@ -23,7 +23,7 @@ app.use(auth(config));
 app.use((req, res, next) => {
 	res.locals.isAuthenticated = req.oidc.isAuthenticated();
 	next();
-  });
+});
 app.use("/users", userRouter);
 app.use("/entries", entryRouter);
 // req.isAuthenticated is provided from the auth router
@@ -32,10 +32,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/callback", (req, res) => {
+	console.log(req.body);
 	res.send({
-		"authenticated": req.oidc.isAuthenticated()
-	})
-})
+		authenticated: req.oidc.isAuthenticated(),
+	});
+});
 
 app.get("/profile", requiresAuth(), (req, res) => {
 	res.send(JSON.stringify(req.oidc.user));
