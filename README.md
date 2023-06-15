@@ -77,3 +77,29 @@ Response example:
 	"updated_at": "2023-05-25T18:13:32.479Z"
 }
 ```
+
+## Tests
+
+### new user
+
+```
+curl -i -X POST 'http://localhost:3010'/users -H "Content-type: application/json" -d '{ "id": "1", "name": "John Doe", "loginId": "johndoe123", "provider": "Google", "email": "johndoe@example.com", "password": "password123", "created_at": 1646307758, "updated_at": 1646307786 }'
+```
+
+### new entry
+
+```
+curl -i -X POST 'http://localhost:3010'/entries -H "Content-type: application/json" -d '{"user": {"id": "1"} , "description":"teste","type":"DEBIT","amount":23.55}'
+```
+
+### get entries by year and month
+
+```
+curl http://localhost:3010/entries\?year\=2023\&month\=06
+```
+
+### get all users
+
+```
+curl http://localhost:3010/users
+```
